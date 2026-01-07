@@ -23,7 +23,7 @@
         <h2 class="text-lg font-semibold text-slate-900">Bindicator</h2>
         <div class="mt-3 text-sm text-slate-600">
           <p>Next collection: <span class="font-bold"><%= @bindicator.next_bin_day_words %></span></p>
-          <p>Type: —</p>
+          <p>Bins: <%= @bindicator.bins_for_next_collection.join(' ') %></p>
         </div>
       </section>
 

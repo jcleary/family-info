@@ -2,7 +2,6 @@ require "yaml"
 require "date"
 
 class Bindicator
-
   attr_reader :collection_day_of_week, :bins
 
   def initialize
@@ -33,5 +32,13 @@ class Bindicator
     else
       "on #{next_bin_day.strftime("%A, %B %-d")}"
     end
+  end
+
+  def bins_for_next_collection
+    @bins.select do |b|
+      delta_days = (next_bin_day - b[:start_date]).to_i
+      delta_weeks = delta_days / 7
+      delta_weeks % b[:cycle_weeks] == 0
+    end.collect { |b| b[:color] }
   end
 end
