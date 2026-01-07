@@ -1,52 +1,52 @@
 <html>
-  <head>
-    <title>Family Info</title>
+<head>
+  <title>Family Info</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
 
-  <body>
-  <div class="min-h-screen bg-slate-50 p-6">
-    <div class="mx-auto max-w-5xl">
-      <div class="grid gap-6 sm:grid-cols-2">
-        <!-- Weather -->
-        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">Weather</h2>
-          <div class="mt-3 text-sm text-slate-600">
-            <p>Temp: —</p>
-            <p>Wind: —</p>
-          </div>
-        </section>
+<body>
+<div class="min-h-screen bg-slate-50 p-6">
+  <div class="mx-auto max-w-5xl">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <!-- Weather -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 class="text-lg font-semibold text-slate-900">Weather</h2>
+        <div class="mt-3 text-sm text-slate-600">
+          <p>Temp: —</p>
+          <p>Wind: —</p>
+        </div>
+      </section>
 
-        <!-- Bindicator -->
-        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">Bindicator</h2>
-          <div class="mt-3 text-sm text-slate-600">
-            <p>Next collection: —</p>
-            <p>Type: —</p>
-          </div>
-        </section>
+      <!-- Bindicator -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 class="text-lg font-semibold text-slate-900">Bindicator</h2>
+        <div class="mt-3 text-sm text-slate-600">
+          <p>Next collection: <span class="font-bold"><%= @bindicator.next_bin_day_words %></span></p>
+          <p>Type: —</p>
+        </div>
+      </section>
 
-        <!-- Trains -->
-        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">Trains</h2>
-          <div class="mt-3 text-sm text-slate-600">
-            <p>Next train: —</p>
-            <p>Status: —</p>
-          </div>
-        </section>
+      <!-- Trains -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 class="text-lg font-semibold text-slate-900">Trains</h2>
+        <div class="mt-3 text-sm text-slate-600">
+          <p>Next train: —</p>
+          <p>Status: —</p>
+        </div>
+      </section>
 
-        <!-- Restaurants -->
-        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">Restaurants</h2>
-          <div class="mt-3 text-sm text-slate-600">
-            <p>Top pick: —</p>
-            <p>Backup: —</p>
-          </div>
-        </section>
-      </div>
+      <!-- Restaurants -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 class="text-lg font-semibold text-slate-900">Restaurants</h2>
+        <div class="mt-3 text-sm text-slate-600">
+          <p>Top pick: —</p>
+          <p>Backup: —</p>
+        </div>
+      </section>
     </div>
   </div>
+</div>
 
-  </body>
+</body>
 </html>

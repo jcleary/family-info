@@ -7,7 +7,9 @@ require "erb"
 # require "time"
 require "fileutils"
 # require "csv"
+require "./lib/bindicator"
 
+@bindicator = Bindicator.new
 
 template = File.read("templates/index.html.erb")
 html = ERB.new(template).result(binding)
