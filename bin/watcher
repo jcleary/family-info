@@ -1,0 +1,10 @@
+#!/bin/bash
+# Script to watch if files change and trigger build.rb
+
+ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
+echo
+echo "Watcher started. Press [CTRL+C] to stop."
+
+fswatch templates/* build.rb config.yml lib/*  | xargs -n1 -I{} ./build.rb

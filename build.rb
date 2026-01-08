@@ -11,6 +11,8 @@ def include_erb(path, b = binding)
   ERB.new(File.read(path), trim_mode: "-").result(b)
 end
 
+puts "Building site..."
+
 @config = Config.new('config.yml')
 @bindicator = Bindicator.new(@config)
 @restaurants = Restaurants.new(@config)
@@ -26,3 +28,5 @@ puts "Wrote dist/index.html"
 FileUtils.mkdir_p("dist/images")
 FileUtils.cp_r("images/.", "dist/images")
 puts "Copied images to dist/images"
+puts "Done."
+puts
