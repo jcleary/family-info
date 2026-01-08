@@ -1,6 +1,7 @@
 class Config
   attr_reader :collection_day_of_week, :bins, :venues
   attr_reader :restaurants
+  attr_reader :weather
 
   def initialize(file_path)
     @raw = YAML.load_file(file_path) # => Hash
@@ -22,6 +23,8 @@ class Config
       }
     end
     grab_venues
+    grab_weather
+
   end
 
   def grab_venues
@@ -40,5 +43,15 @@ class Config
         events: events
       }
     end
+  end
+
+  def grab_weather
+    w = @raw.fetch("weather")
+    @weather = {
+      latitude: w.fetch("latitude"),
+      longitude: w.fetch("longitude"),
+      timezone: w.fetch("timezone"),
+      location_name: w.fetch("location_name"),
+    }
   end
 end

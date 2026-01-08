@@ -7,4 +7,5 @@ cd "$ROOT_DIR"
 echo
 echo "Watcher started. Press [CTRL+C] to stop."
 
+./build.rb
 fswatch templates/* build.rb config.yml lib/*  | xargs -n1 -I{} ./build.rb

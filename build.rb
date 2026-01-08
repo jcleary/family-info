@@ -6,6 +6,7 @@ require_relative "./lib/bindicator"
 require_relative "./lib/config"
 require_relative "./lib/restaurants"
 require_relative "./lib/shows"
+require_relative './lib/weather_service'
 
 def include_erb(path, b = binding)
   ERB.new(File.read(path), trim_mode: "-").result(b)
@@ -17,6 +18,7 @@ puts "Building site..."
 @bindicator = Bindicator.new(@config)
 @restaurants = Restaurants.new(@config)
 @shows = Shows.new(@config)
+@weather = WeatherService.new(@config).today
 
 template = File.read("templates/index.html.erb")
 html = ERB.new(template).result(binding)

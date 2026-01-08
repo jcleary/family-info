@@ -14,6 +14,13 @@ bins:
     start_date: "2025-06-12"
     cycle_weeks: 2
 
+weather:
+  latitude: 53.371208
+  longitude: -2.188037
+  timezone: "Europe/London"
+  location_name: "Cheadle Hulme, UK"
+
+
 restaurants:
   - name: "The Golden Gate"
     opening_hours:
