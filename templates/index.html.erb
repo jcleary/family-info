@@ -50,12 +50,33 @@
         </div>
       </section>
 
-      <!-- Trains -->
-      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 class="text-lg font-semibold text-slate-900">Trains</h2>
-        <div class="mt-3 text-sm text-slate-600">
-          <p>Next train: —</p>
-          <p>Status: —</p>
+      <!-- Shows -->
+      <section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+
+        <header class="rounded-t-2xl bg-indigo-100 px-5 py-2">
+          <h2 class="text-lg font-semibold text-sky-900">Shows</h2>
+        </header>
+
+        <div class="p-4">
+          <table class="table-auto w-full">
+            <thead>
+            <tr>
+              <th class="text-left font-semibold text-sm ">Dates</th>
+              <th class="text-left font-semibold text-sm ">Performance</th>
+              <th class="text-left font-semibold text-sm ">Theatre</th>
+            </tr>
+            </thead>
+
+            <% @shows.upcoming_shows.each do |event| %>
+              <tr>
+                <td class="text-sm"><%= event[:dates] %></td>
+                <td class="text-sm"><%= event[:name] %></td>
+                <td class="text-sm"><%= event[:venue] %></td>
+              </tr>
+            <% end %>
+          </table>
+
+
         </div>
       </section>
 
