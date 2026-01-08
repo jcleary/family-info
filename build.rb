@@ -4,9 +4,11 @@ require "erb"
 require "fileutils"
 require "./lib/bindicator"
 require "./lib/config"
+require "./lib/restaurants"
 
 @config = Config.new('config.yml')
 @bindicator = Bindicator.new(@config)
+@restaurants = Restaurants.new(@config)
 
 template = File.read("templates/index.html.erb")
 html = ERB.new(template).result(binding)

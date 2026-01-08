@@ -13,3 +13,23 @@ bins:
   - color: "Black"
     start_date: "2025-06-12"
     cycle_weeks: 2
+restaurants:
+  - name: "The Golden Gate"
+    opening_hours:
+      monday: [ "12-2pm", "4:30-9pm" ]
+      tuesday: "Closed"
+      wednesday: [ "12-2pm", "3:30-9pm" ]
+      thursday: [ "12-2pm", "4:30-9pm" ]
+      friday: [ "12-2pm", "3:30-1pm" ]
+      saturday: "4:30-10pm"
+      sunday: "16:30-9pm"
+  - name: "Health & Delicious"
+    opening_hours:
+      monday: "5-10pm"
+      tuesday: "Closed"
+      wednesday: "5-10pm"
+      thursday: "5-10pm"
+      friday: "5-10:30pm"
+      saturday: "5-10:30pm"
+      sunday: "5-10pm"
+
