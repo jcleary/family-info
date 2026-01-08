@@ -2,10 +2,10 @@
 
 require "erb"
 require "fileutils"
-require "./lib/bindicator"
-require "./lib/config"
-require "./lib/restaurants"
-require "./lib/shows"
+require_relative "./lib/bindicator"
+require_relative "./lib/config"
+require_relative "./lib/restaurants"
+require_relative "./lib/shows"
 
 def include_erb(path, b = binding)
   ERB.new(File.read(path), trim_mode: "-").result(b)

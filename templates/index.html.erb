@@ -8,22 +8,13 @@
 <body>
 <div class="min-h-screen bg-slate-50 p-6">
   <div class="mx-auto max-w-5xl">
-    <div class="grid gap-6 sm:grid-cols-2">
-      <!-- Weather -->
-      <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 class="text-lg font-semibold text-slate-900">Weather</h2>
-        <div class="mt-3 text-sm text-slate-600">
-          <p>Temp: —</p>
-          <p>Wind: —</p>
-        </div>
-      </section>
-
-      <%= include_erb("templates/_bins.html.erb") %>
+    <div class="columns-2 gap-6 space-y-6">
+      <%= include_erb("templates/_weather.html.erb") %>
       <%= include_erb("templates/_shows.html.erb") %>
+      <%= include_erb("templates/_bins.html.erb") %>
       <%= include_erb("templates/_restaurants.html.erb") %>
     </div>
   </div>
 </div>
-
 </body>
 </html>
