@@ -1,0 +1,26 @@
+<!-- Restaurants -->
+<section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+  <header class="rounded-t-2xl bg-indigo-100 px-5 py-2">
+    <h2 class="text-lg font-semibold text-sky-900">Restaurants</h2>
+  </header>
+
+  <div class="p-4">
+    <% @restaurants.open.each do |restaurant| %>
+      <div class="text-sm">
+        <span class="font-semibold"><%= restaurant[:name] %></span>
+        <% restaurant[:opening_hours].each do |hour| %>
+          <%= hour %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% @restaurants.closed.each do |restaurant| %>
+      <div class="text-sm text-slate-400">
+        <span class="font-semibold"><%= restaurant[:name] %></span>
+        Closed
+      </div>
+    <% end %>
+  </div>
+</section>
+
+stuffd

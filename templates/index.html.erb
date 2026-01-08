@@ -19,63 +19,8 @@
       </section>
 
       <%= include_erb("templates/_bins.html.erb") %>
-
-      <!-- Shows -->
-      <section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-
-        <header class="rounded-t-2xl bg-indigo-100 px-5 py-2">
-          <h2 class="text-lg font-semibold text-sky-900">Shows</h2>
-        </header>
-
-        <div class="p-4">
-          <table class="table-auto w-full">
-            <thead>
-            <tr>
-              <th class="text-left font-semibold text-sm ">Dates</th>
-              <th class="text-left font-semibold text-sm ">Performance</th>
-              <th class="text-left font-semibold text-sm ">Theatre</th>
-            </tr>
-            </thead>
-
-            <% @shows.upcoming_shows.each do |event| %>
-              <tr>
-                <td class="text-sm"><%= event[:dates] %></td>
-                <td class="text-sm"><%= event[:name] %></td>
-                <td class="text-sm"><%= event[:venue] %></td>
-              </tr>
-            <% end %>
-          </table>
-
-
-        </div>
-      </section>
-
-      <!-- Restaurants -->
-      <section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-
-        <header class="rounded-t-2xl bg-indigo-100 px-5 py-2">
-          <h2 class="text-lg font-semibold text-sky-900">Restaurants</h2>
-        </header>
-
-        <div class="p-4">
-          <% @restaurants.open.each do |restaurant| %>
-            <div class="text-sm">
-              <span class="font-semibold"><%= restaurant[:name] %></span>
-              <% restaurant[:opening_hours].each do |hour| %>
-                <%= hour %>
-              <% end %>
-            </div>
-          <% end %>
-
-          <% @restaurants.closed.each do |restaurant| %>
-            <div class="text-sm text-slate-400">
-              <span class="font-semibold"><%= restaurant[:name] %></span>
-              Closed
-            </div>
-          <% end %>
-
-        </div>
-      </section>
+      <%= include_erb("templates/_shows.html.erb") %>
+      <%= include_erb("templates/_restaurants.html.erb") %>
     </div>
   </div>
 </div>
