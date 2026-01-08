@@ -24,7 +24,7 @@ restaurants:
       friday: [ "12-2pm", "3:30-1pm" ]
       saturday: "4:30-10pm"
       sunday: "16:30-9pm"
-  - name: "Health & Delicious"
+  - name: "Healthy & Delicious"
     opening_hours:
       monday: "5-10pm"
       tuesday: "Closed"
