@@ -1,0 +1,7 @@
+#!/bin/bash
+# Script to run a local web server serving files from the 'dist' directory
+
+ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
+python3 -m http.server 8080 --directory dist

@@ -31,14 +31,28 @@ jobs:
         run: |
           python3 -m http.server 8080 --directory dist >/dev/null 2>&1 &
           echo $! > /tmp/httpserver.pid
+          # Wait until the server responds
+          for i in {1..50}; do
+            curl -sSf http://127.0.0.1:8080/ >/dev/null && break
+            sleep 0.1
+          done
 
-      - name: Screenshot 800x480
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright
         run: |
-          google-chrome --headless --disable-gpu \
-            --window-size=800,480 \
-            --hide-scrollbars \
-            --screenshot=dist/images/screenshot.png \
-            http://127.0.0.1:8080/
+          npm i -D playwright
+          npx playwright install --with-deps chromium
+
+      - name: Screenshot 800x480 (Playwright)
+        run: node scripts/screenshot.js
+        env:
+          SCREENSHOT_URL: http://127.0.0.1:8080/
+          SCREENSHOT_PATH: dist/images/screenshot.png
+          SCREENSHOT_WIDTH: "800"
+          SCREENSHOT_HEIGHT: "480"
 
       - name: Stop server
         if: always()
