@@ -1,21 +1,3 @@
-# Bin collection schedule configuration
-collection_day_of_week: 4 # Thursday
-bins:
-  - color: "Blue"
-    start_date: "2025-06-05"
-    cycle_weeks: 4
-  - color: "Green"
-    start_date: "2025-06-05"
-    cycle_weeks: 1
-  - color: "Brown"
-    start_date: "2025-06-05"
-    cycle_weeks: 4
-  - color: "Black"
-    start_date: "2025-06-12"
-    cycle_weeks: 2
-
-
-
 restaurants:
   - name: "The Golden Gate"
     opening_hours:
