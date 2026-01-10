@@ -1,10 +1,11 @@
 class Config
-  attr_reader :collection_day_of_week, :bins, :venues
+  attr_reader :collection_day_of_week, :bins
   attr_reader :restaurants
   attr_reader :weather
 
-  def initialize(file_path)
-    @raw = YAML.load_file(file_path) # => Hash
+  def initialize(path = 'config')
+    @path = path
+    @raw = YAML.load_file("#{path}/config.yml") # => Hash
 
     @collection_day_of_week = @raw.fetch("collection_day_of_week").to_i
 
@@ -22,28 +23,32 @@ class Config
         opening_hours: r.fetch("opening_hours")
       }
     end
-    grab_venues
     grab_weather
-
   end
 
-  def grab_venues
-    @venues = @raw.fetch("venues").map do |v|
-      events = v.fetch("events").map do |e|
-        {
-          name: e.fetch("name"),
-          playwright: e.fetch("playwright"),
-          start_date: Date.parse(e.fetch("start_date")),
-          end_date: Date.parse(e.fetch("end_date"))
-        }
+  def venues
+    @venues ||=
+      begin
+        raw = YAML.load_file("#{@path}/venues.yml")
+        raw.fetch("venues").map do |v|
+          events = v.fetch("events").map do |e|
+            {
+              name: e.fetch("name"),
+              playwright: e.fetch("playwright"),
+              start_date: Date.parse(e.fetch("start_date")),
+              end_date: Date.parse(e.fetch("end_date"))
+            }
+          end
+          {
+            name: v.fetch("name"),
+            url: v.fetch("url"),
+            events: events
+          }
+        end
       end
-      {
-        name: v.fetch("name"),
-        url: v.fetch("url"),
-        events: events
-      }
-    end
   end
+
+  private
 
   def grab_weather
     w = @raw.fetch("weather")
@@ -53,5 +58,9 @@ class Config
       timezone: w.fetch("timezone"),
       location_name: w.fetch("location_name"),
     }
+  end
+
+  def load_config(file)
+    YAML.load_file(file)
   end
 end

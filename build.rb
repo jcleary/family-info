@@ -14,7 +14,7 @@ end
 
 puts "Building site..."
 
-@config = Config.new('config.yml')
+@config = Config.new
 @bindicator = Bindicator.new(@config)
 @restaurants = Restaurants.new(@config)
 @shows = Shows.new(@config)
