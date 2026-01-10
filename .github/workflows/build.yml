@@ -27,6 +27,23 @@ jobs:
       - name: Build site
         run: ruby build.rb
 
+      - name: Serve dist
+        run: |
+          python3 -m http.server 8080 --directory dist >/dev/null 2>&1 &
+          echo $! > /tmp/httpserver.pid
+
+      - name: Screenshot 800x480
+        run: |
+          google-chrome --headless --disable-gpu \
+            --window-size=800,480 \
+            --screenshot=dist/screenshot.png \
+            http://127.0.0.1:8080/
+
+      - name: Stop server
+        if: always()
+        run: |
+          kill "$(cat /tmp/httpserver.pid)" || true
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -34,6 +51,7 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+
 
   deploy:
     runs-on: ubuntu-latest
