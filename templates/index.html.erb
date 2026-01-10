@@ -5,13 +5,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="h-[480px] w-[800px] overflow-hidden">
-<div class="bg-slate-50 p-1 min-h-full">
-  <div class="columns-2 gap-3 space-y-3">
-    <%= include_erb("templates/_weather.html.erb") %>
-    <%= include_erb("templates/_shows.html.erb") %>
-    <%= include_erb("templates/_bins.html.erb") %>
-    <%= include_erb("templates/_restaurants.html.erb") %>
+<body>
+<div class="bg-slate-50 h-screen">
+  <div class="h-[480px] w-[800px] p-1">
+    <div class="columns-2 gap-3 space-y-3">
+      <%= include_erb("templates/_weather.html.erb") %>
+      <%= include_erb("templates/_shows.html.erb") %>
+      <%= include_erb("templates/_bins.html.erb") %>
+      <%= include_erb("templates/_restaurants.html.erb") %>
+    </div>
   </div>
 </div>
 </body>
