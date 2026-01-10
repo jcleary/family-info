@@ -43,7 +43,7 @@ class WeatherService
 
     forecast = future_hrs.collect do |h|
       {
-        time: DateTime.parse(data["hourly"]["time"][h]).strftime("%k%P"),
+        time: DateTime.parse(data["hourly"]["time"][h]).strftime("%l%P"),
         temperature_2m: data["hourly"]["temperature_2m"][h],
         precipitation_probability: data["hourly"]["precipitation_probability"][h],
         wind_speed_10m: data["hourly"]["wind_speed_10m"][h]
