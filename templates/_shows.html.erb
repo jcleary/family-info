@@ -6,7 +6,7 @@
   </header>
 
   <div class="p-4">
-    <table class="table-auto w-full">
+    <table class="table-auto w-full border-spacing-y-1 border-separate">
       <thead>
       <tr>
         <th class="text-left font-semibold text-sm ">Dates</th>
@@ -14,12 +14,13 @@
         <th class="text-left font-semibold text-sm ">Theatre</th>
       </tr>
       </thead>
+      <tbody></tbody>
 
       <% @shows.upcoming_shows.each do |event| %>
-        <tr>
-          <td class="text-sm"><%= event[:dates] %></td>
-          <td class="text-sm"><%= event[:name] %></td>
-          <td class="text-sm"><%= event[:venue] %></td>
+        <tr class="text-sm <%= event[:soon?] ? 'bg-green-100 font-semibold' : '' %>">
+          <td class=" "><%= event[:dates] %></td>
+          <td class=""><%= event[:name] %></td>
+          <td class=""><%= event[:venue] %></td>
         </tr>
       <% end %>
     </table>

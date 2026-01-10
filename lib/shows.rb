@@ -1,4 +1,7 @@
 class Shows
+
+  SOON_DAYS = 9
+
   def initialize(config)
     @config = config
   end
@@ -16,7 +19,8 @@ class Shows
               start_date: event[:start_date],
               end_date: event[:end_date],
               starts_on: Date.today >= event[:start_date] ? " Today" : "#{(event[:start_date] - Date.today).to_i} days",
-              dates: event[:start_date] == event[:end_date] ? event[:start_date].strftime('%e %b') : "#{event[:start_date].strftime('%e')} - #{event[:end_date].strftime('%e %b')}"
+              dates: event[:start_date] == event[:end_date] ? event[:start_date].strftime('%e %b') : "#{event[:start_date].strftime('%e')} - #{event[:end_date].strftime('%e %b')}",
+              soon?: event[:start_date] < (Date.today + SOON_DAYS)
             }
           end
         end
