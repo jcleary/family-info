@@ -23,8 +23,8 @@ class WeatherService
       timezone: tz,
       forecast_days: 1,
       temperature_unit: "celsius",
-      current: "temperature_2m,apparent_temperature,weathercode,is_day",
-      hourly: "temperature_2m,apparent_temperature,precipitation_probability"
+      current: "temperature_2m,apparent_temperature,weathercode,is_day,wind_speed_10m",
+      hourly: "temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m"
     )
 
     data = get_json(uri)
@@ -38,6 +38,18 @@ class WeatherService
     today_date = times.empty? ? Date.today : Time.parse(times.first).to_date
     idxs = times.each_index.select { |i| Time.parse(times[i]).to_date == today_date }
 
+    future_hrs = [6, 12, 18, 24].reject { |h| h < Time.now.hour }
+    future_hrs = [6, 12, 18, 23]
+
+    forecast = future_hrs.collect do |h|
+      {
+        time: DateTime.parse(data["hourly"]["time"][h]).strftime("%k%P"),
+        temperature_2m: data["hourly"]["temperature_2m"][h],
+        precipitation_probability: data["hourly"]["precipitation_probability"][h],
+        wind_speed_10m: data["hourly"]["wind_speed_10m"][h]
+      }
+    end
+
     # puts data
     {
       location: @config.weather[:location_name],
@@ -47,7 +59,8 @@ class WeatherService
       chance_of_rain_max_pct: idxs.map { |i| probs[i] }.compact.max, # hourly precipitation probability :contentReference[oaicite:4]{index=4}
       temp_max_c: idxs.map { |i| temps[i] }.compact.max,
       feels_like_max_c: idxs.map { |i| feels[i] }.compact.max,
-      weathercode_now_image: weather_icon_filename(code: data.dig("current", "weathercode"), is_day: data.dig("current", "is_day") == 1)
+      weathercode_now_image: weather_icon_filename(code: data.dig("current", "weathercode"), is_day: data.dig("current", "is_day") == 1),
+      forecast: forecast,
     }
   end
 

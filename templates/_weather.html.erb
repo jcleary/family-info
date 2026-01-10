@@ -6,8 +6,8 @@
   </header>
 
   <div class="flex-col">
-    <div class="flex flex-row p-4">
-      <div class="w-38">
+    <div class="flex flex-row p-4 space-x-3">
+      <div class="">
         <div class="flex-1">
           <p class="text-sm text-slate-900">Temp</p>
         </div>
@@ -16,10 +16,30 @@
         </div>
         <div class="text-sm test-slate-900">Feels like <%= @weather[:feels_like_now_c] %> &deg;C</div>
       </div>
-      <div>
-      </div>
       <div class="flex flex-row">
         <img class="w-20" src="images/weather/<%= @weather[:weathercode_now_image] %>">
+      </div>
+      <div class="flex flex-row">
+        <table class="table-auto border-spacing border-spacing-y-1 border-spacing-x-3 border-separate ">
+          <thead>
+          <tr>
+            <th class="text-left font-semibold text-sm ">Time</th>
+            <th class="text-left font-semibold text-sm ">Temp (&deg;C)</th>
+            <th class="text-left font-semibold text-sm ">Rain (&deg;C)</th>
+            <th class="text-left font-semibold text-sm ">Wind</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @weather[:forecast].each do |slot| %>
+            <tr class="text-sm">
+              <td><%= slot[:time] %></td>
+              <td><%= slot[:temperature_2m] %></td>
+              <td><%= slot[:precipitation_probability] %></td>
+              <td><%= slot[:wind_speed_10m] %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
