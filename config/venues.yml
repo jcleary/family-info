@@ -36,3 +36,9 @@ venues:
         start_date: "2026-02-10"
         end_date: "2026-02-13"
         description: ""
+
+  - name: "Inventery"
+    events:
+      - name: "Comedy Night"
+        start_date: "2026-01-28"
+        end_date: "2026-01-28"

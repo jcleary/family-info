@@ -9,13 +9,14 @@ class Shows
       venue[:events].each do |event|
         if event[:start_date]
           if event[:end_date] > Date.today && event[:start_date] < (Date.today + days_ahead)
+
             @events << {
               venue: venue[:name],
               name: event[:name],
               start_date: event[:start_date],
               end_date: event[:end_date],
               starts_on: Date.today >= event[:start_date] ? " Today" : "#{(event[:start_date] - Date.today).to_i} days",
-              dates: "#{event[:start_date].strftime("%e")}-#{event[:end_date].strftime("%e %b")}",
+              dates: event[:start_date] == event[:end_date] ? event[:start_date].strftime('%e %b') : "#{event[:start_date].strftime('%e')} - #{event[:end_date].strftime('%e %b')}"
             }
           end
         end

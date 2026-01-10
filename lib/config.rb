@@ -21,14 +21,14 @@ class Config
         events = v.fetch("events").map do |e|
           {
             name: e.fetch("name"),
-            playwright: e.fetch("playwright"),
+            playwright: e.fetch("playwright", ''),
             start_date: Date.parse(e.fetch("start_date")),
             end_date: Date.parse(e.fetch("end_date"))
           }
         end
         {
           name: v.fetch("name"),
-          url: v.fetch("url"),
+          url: v.fetch("url", ""),
           events: events
         }
       end
@@ -53,6 +53,17 @@ class Config
         {
           name: r.fetch("name"),
           opening_hours: r.fetch("opening_hours")
+        }
+      end
+  end
+
+  def calendar
+    @calendar ||=
+      begin
+        raw = raw_config.fetch("calendar")
+        {
+          green_weeks: raw.fetch("green_weeks").collect { |d| Date.parse(d) },
+          yellow_weeks: raw.fetch("yellow_weeks").collect { |d| Date.parse(d) },
         }
       end
   end
