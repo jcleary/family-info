@@ -1,5 +1,5 @@
 venues:
-  - name: "Chads Theatre"
+  - name: "Chads"
     url: "https://www.ticketsource.co.uk/chads"
     events:
       - name: "Dangerous Corner"

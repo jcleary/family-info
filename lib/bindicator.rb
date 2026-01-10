@@ -23,7 +23,7 @@ class Bindicator
     elsif next_bin_day == Date.today + 1
       "Tomorrow"
     else
-      "on #{next_bin_day.strftime("%A, %B %-d")}"
+      next_bin_day.strftime("%a, %b %-d")
     end
   end
 
