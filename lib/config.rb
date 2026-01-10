@@ -1,7 +1,6 @@
 class Config
   attr_reader :collection_day_of_week, :bins
   attr_reader :restaurants
-  attr_reader :weather
 
   def initialize(path = 'config')
     @path = path
@@ -23,7 +22,6 @@ class Config
         opening_hours: r.fetch("opening_hours")
       }
     end
-    grab_weather
   end
 
   def venues
@@ -48,17 +46,20 @@ class Config
       end
   end
 
-  private
-
-  def grab_weather
-    w = @raw.fetch("weather")
-    @weather = {
-      latitude: w.fetch("latitude"),
-      longitude: w.fetch("longitude"),
-      timezone: w.fetch("timezone"),
-      location_name: w.fetch("location_name"),
-    }
+  def weather
+    @weather ||=
+      begin
+        raw = YAML.load_file("#{@path}/weather.yml").fetch("weather")
+        {
+          latitude: raw.fetch("latitude"),
+          longitude: raw.fetch("longitude"),
+          timezone: raw.fetch("timezone"),
+          location_name: raw.fetch("location_name"),
+        }
+      end
   end
+
+  private
 
   def load_config(file)
     YAML.load_file(file)
