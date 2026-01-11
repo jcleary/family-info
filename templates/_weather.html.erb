@@ -12,9 +12,9 @@
           <p class="text-sm text-slate-900">Temp</p>
         </div>
         <div>
-          <p class="text-xl font-semibold text-slate-900"><%= @weather[:temp_now_c] %> &deg;C</p>
+          <p class="text-xl font-semibold text-slate-900"><%= @weather[:temp_now_c].round %> &deg;C</p>
         </div>
-        <div class="text-sm test-slate-900">Feels like <%= @weather[:feels_like_now_c] %> &deg;C</div>
+        <div class="text-sm test-slate-900">Feels like <%= @weather[:feels_like_now_c].round %> &deg;C</div>
       </div>
       <div class="flex flex-row">
         <img class="w-20" src="images/weather/<%= @weather[:weathercode_now_image] %>">
@@ -33,9 +33,9 @@
           <% @weather[:forecast].each do |slot| %>
             <tr class="text-sm">
               <td><%= slot[:time] %></td>
-              <td><%= slot[:temperature_2m].round(0) %>&deg;</td>
+              <td><%= slot[:temperature_2m].round %>&deg;</td>
               <td><%= slot[:precipitation_probability] %>%</td>
-              <td><%= slot[:wind_speed_10m].round(0) %> kph</td>
+              <td><%= slot[:wind_speed_10m].round %> kph</td>
             </tr>
           <% end %>
           </tbody>
