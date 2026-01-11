@@ -41,10 +41,9 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Playwright
+      - name: Install Playwright Core (no browser download)
         run: |
-          npm i -D playwright
-          npx playwright install --with-deps chromium
+          npm i -D --no-audit --no-fund playwright-core
 
       - name: Screenshot 800x480 (Playwright)
         run: node scripts/screenshot.js

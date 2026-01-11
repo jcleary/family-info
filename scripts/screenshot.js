@@ -1,4 +1,4 @@
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
 
 const url = "http://127.0.0.1:8080/";
 const path = "dist/images/screenshot.png";
@@ -10,6 +10,7 @@ const height = Number(process.env.SCREENSHOT_HEIGHT || "480");
 const fullPage = process.env.FULL_PAGE === "1";
 
 const browser = await chromium.launch({
+  channel: "chrome",
   args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
 
