@@ -6,7 +6,7 @@
   </header>
 
   <div class="flex-col">
-    <div class="flex flex-row p-4 space-x-3">
+    <div class="flex flex-row space-x-3  py-2 px-4">
       <div class="">
         <div class="flex-1">
           <p class="text-sm text-slate-900">Temp</p>
@@ -24,18 +24,18 @@
           <thead>
           <tr>
             <th class="text-left font-semibold text-sm ">Time</th>
-            <th class="text-left font-semibold text-sm ">Temp (&deg;C)</th>
-            <th class="text-left font-semibold text-sm ">Rain (%)</th>
-            <th class="text-left font-semibold text-sm ">Wind (mpg)</th>
+            <th class="text-left font-semibold text-sm ">Temp</th>
+            <th class="text-left font-semibold text-sm ">Rain</th>
+            <th class="text-left font-semibold text-sm ">Wind (kph)</th>
           </tr>
           </thead>
           <tbody>
           <% @weather[:forecast].each do |slot| %>
             <tr class="text-sm">
               <td><%= slot[:time] %></td>
-              <td><%= slot[:temperature_2m] %></td>
-              <td><%= slot[:precipitation_probability] %></td>
-              <td><%= slot[:wind_speed_10m] %></td>
+              <td><%= slot[:temperature_2m].round(0) %>&deg;</td>
+              <td><%= slot[:precipitation_probability] %>%</td>
+              <td><%= slot[:wind_speed_10m].round(0) %> kph</td>
             </tr>
           <% end %>
           </tbody>
