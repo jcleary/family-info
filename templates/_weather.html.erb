@@ -6,19 +6,16 @@
   </header>
 
   <div class="flex-col">
-    <div class="flex flex-row space-x-3  py-2 px-4">
-      <div class="">
-        <div class="flex-1">
-          <p class="text-sm text-slate-900">Temp</p>
-        </div>
-        <div>
-          <p class="text-xl font-semibold text-slate-900"><%= @weather[:temp_now_c].round %> &deg;C</p>
-        </div>
-        <div class="text-sm test-slate-900">Feels like <%= @weather[:feels_like_now_c].round %> &deg;C</div>
-      </div>
-      <div class="flex flex-row">
+    <div class="flex flex-row space-x-3  py-2 px-4 justify-between">
+
+      <!-- Current Weather -->
+      <div class="flex flex-col space-y-0">
+        <div class="text-xl font-semibold text-slate-900 text-center"><%= @weather[:temp_now_c].round %>&deg;</div>
+        <div class="text-sm test-slate-900 text-center">Feels like <%= @weather[:feels_like_now_c].round %>&deg;</div>
         <img class="w-20" src="images/weather/<%= @weather[:weathercode_now_image] %>">
       </div>
+
+      <!-- Forecast -->
       <div class="flex flex-row">
         <table class="table-auto border-spacing border-spacing-y-1 border-spacing-x-3 border-separate ">
           <thead>
@@ -26,22 +23,30 @@
             <th class="text-left font-semibold text-sm ">Time</th>
             <th class="text-left font-semibold text-sm ">Temp</th>
             <th class="text-left font-semibold text-sm ">Rain</th>
-            <th class="text-left font-semibold text-sm ">Wind (kph)</th>
+            <th class="text-left font-semibold text-sm ">Wind</th>
           </tr>
           </thead>
           <tbody>
           <% @weather[:forecast].each do |slot| %>
+            <% if slot[:time] == '12am' %>
+              <tr>
+                <td colspan="4" class="p-0">
+                  <hr class="border-slate-300">
+                </td>
+              </tr>
+            <% end %>
             <tr class="text-sm">
               <td><%= slot[:time] %></td>
-              <td><%= slot[:temperature_2m].round %>&deg;</td>
-              <td><%= slot[:precipitation_probability] %>%</td>
-              <td><%= slot[:wind_speed_10m].round %> kph</td>
+              <td class="text-center"><%= slot[:temperature_2m].round %>&deg;</td>
+              <td class="text-center"><%= slot[:precipitation_probability] %>%</td>
+              <td class="text-center"><%= slot[:wind_speed_10m].round %> kph</td>
             </tr>
           <% end %>
           </tbody>
         </table>
       </div>
     </div>
+
   </div>
 </section>
 

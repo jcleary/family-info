@@ -21,7 +21,7 @@ class WeatherService
       latitude: @config.weather[:latitude],
       longitude: @config.weather[:longitude],
       timezone: tz,
-      forecast_days: 1,
+      forecast_days: 2,
       temperature_unit: "celsius",
       current: "temperature_2m,apparent_temperature,weathercode,is_day,wind_speed_10m",
       hourly: "temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m"
@@ -38,8 +38,9 @@ class WeatherService
     today_date = times.empty? ? Date.today : Time.parse(times.first).to_date
     idxs = times.each_index.select { |i| Time.parse(times[i]).to_date == today_date }
 
-    future_hrs = [6, 12, 18, 24].reject { |h| h < Time.now.hour }
-    future_hrs = [6, 12, 18, 23]
+    future_hrs = [6, 12, 18].reject { |h| h < Time.now.hour } # hrs for rest of today
+    future_hrs = future_hrs.append(24, 30, 36, 42) # add early hrs for tomorrow
+    future_hrs = future_hrs.take(4)
 
     forecast = future_hrs.collect do |h|
       {
