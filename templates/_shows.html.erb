@@ -17,10 +17,10 @@
       <tbody></tbody>
 
       <% @shows.upcoming_shows.each do |event| %>
-        <tr class="text-sm <%= event[:soon?] ? 'bg-green-400 font-semibold' : '' %>">
-          <td class=" "><%= event[:dates] %></td>
+        <tr class="text-sm <%= event[:soon?] ? 'bg-green-900 font-semibold text-white' : '' %>">
+          <td class="pl-1"><%= event[:dates] %></td>
           <td class=""><%= event[:name] %></td>
-          <td class=""><%= event[:venue] %></td>
+          <td class="pr-1"><%= event[:venue] %></td>
         </tr>
       <% end %>
     </table>
