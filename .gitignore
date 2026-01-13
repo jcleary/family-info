@@ -1,3 +1,7 @@
 dist/
 node_modules
 pico/secrets.py
+
+# ignore the playwright node setup files
+package-lock.json
+package.json

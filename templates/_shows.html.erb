@@ -1,8 +1,8 @@
 <!-- Shows -->
-<section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+<section class="rounded-2xl border border-stone-900 bg-white shadow-sm overflow-hidden">
 
-  <header class="rounded-t-2xl bg-indigo-100 px-5 py-2">
-    <h2 class="text-lg font-semibold text-sky-900">Shows</h2>
+  <header class="rounded-t-2xl bg-stone-900 px-5 py-2">
+    <h2 class="text-lg font-semibold text-white">Shows</h2>
   </header>
 
   <div class="px-4 py-2">
@@ -17,7 +17,7 @@
       <tbody></tbody>
 
       <% @shows.upcoming_shows.each do |event| %>
-        <tr class="text-sm <%= event[:soon?] ? 'bg-green-100 font-semibold' : '' %>">
+        <tr class="text-sm <%= event[:soon?] ? 'bg-green-400 font-semibold' : '' %>">
           <td class=" "><%= event[:dates] %></td>
           <td class=""><%= event[:name] %></td>
           <td class=""><%= event[:venue] %></td>

@@ -1,6 +1,6 @@
 class Shows
 
-  SOON_DAYS = 9
+  SOON_DAYS = 20
 
   def initialize(config)
     @config = config
