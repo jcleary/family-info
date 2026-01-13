@@ -52,7 +52,7 @@ class Config
       raw_config.fetch("restaurants").map do |r|
         {
           name: r.fetch("name"),
-          opening_hours: r.fetch("opening_hours")
+          closed: r.fetch("closed")
         }
       end
   end

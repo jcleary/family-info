@@ -5,20 +5,15 @@
   </header>
 
   <div class="px-4 py-2">
-    <% @restaurants.open.each do |restaurant| %>
-      <div class="text-sm">
-        <span class="font-semibold"><%= restaurant[:name] %></span>
-        <% restaurant[:opening_hours].each do |hour| %>
-          <%= hour %>
-        <% end %>
+    <div class="font-semibold text-sm">
+      Opened Today:
+    </div>
+    <% @restaurants.open.each do |name|
+      name %>
+      <div class="px-4 grid text-sm ">
+        <%= name %>
       </div>
     <% end %>
 
-    <% @restaurants.closed.each do |restaurant| %>
-      <div class="text-sm text-slate-400">
-        <span class="font-semibold"><%= restaurant[:name] %></span>
-        Closed
-      </div>
-    <% end %>
   </div>
 </section>

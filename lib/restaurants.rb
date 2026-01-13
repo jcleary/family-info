@@ -7,14 +7,14 @@ class Restaurants
     @closed = []
 
     today = Date.today
-    dow_words = today.strftime("%A").downcase
+    dow_words = today.strftime("%a").downcase
 
     config.restaurants.each do |restaurant|
-      opening_hours = Array(restaurant[:opening_hours][dow_words])
-      if opening_hours.include?("Closed")
-        @closed << { name: restaurant[:name], opening_hours: opening_hours }
+      closed_today = Array(restaurant[:closed]).include?(dow_words)
+      if closed_today
+        @closed << restaurant[:name]
       else
-        @open << { name: restaurant[:name], opening_hours: opening_hours }
+        @open << restaurant[:name]
       end
     end
   end
