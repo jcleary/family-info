@@ -17,7 +17,7 @@
       <tbody></tbody>
 
       <% @shows.upcoming_shows.each do |event| %>
-        <tr class="text-sm <%= event[:soon?] ? 'bg-green-900 font-semibold text-white' : '' %>">
+        <tr class="text-sm <%= event[:soon?] ? 'bg-green-800 font-semibold text-white' : '' %>">
           <td class="pl-1"><%= event[:dates] %></td>
           <td class=""><%= event[:name] %></td>
           <td class="pr-1"><%= event[:venue] %></td>

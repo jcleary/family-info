@@ -1,12 +1,13 @@
 class Shows
 
-  SOON_DAYS = 20
+  SOON_DAYS = 9
+  DAYS_AHEAD = 21
 
   def initialize(config)
     @config = config
   end
 
-  def upcoming_shows(days_ahead = 51)
+  def upcoming_shows(days_ahead = DAYS_AHEAD)
     @events = []
     @config.venues.each do |venue|
       venue[:events].each do |event|
