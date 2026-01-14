@@ -76,3 +76,23 @@ venues:
         start_date: "2026-05-16"
         end_date: "2026-05-23"
         description: ""
+
+  - name: "Brookdale Theatre"
+    url: "https://www.ticketsource.co.uk/whats-on/stockport/brookdale-club-theatre-ltd"
+    events:
+      - name: "God Of Carnage"
+        playwright: "Yasmina Reza"
+        start_date: "2026-01-20"
+        end_date: "2026-01-24"
+        description: ""
+      - name: "The Curious Incident of the Dog in the Night-time"
+        playwright: "Simon Stephens"
+        start_date: "2026-03-04"
+        end_date: "2026-03-07"
+        description: ""
+      - name: "The Producers"
+        playwright: "Mel Brooks & Thomas Meehan"
+        start_date: "2026-04-20"
+        end_date: "2026-04-25"
+        description: ""
+
