@@ -60,7 +60,7 @@ class WeatherService
       chance_of_rain_max_pct: idxs.map { |i| probs[i] }.compact.max, # hourly precipitation probability :contentReference[oaicite:4]{index=4}
       temp_max_c: idxs.map { |i| temps[i] }.compact.max,
       feels_like_max_c: idxs.map { |i| feels[i] }.compact.max,
-      weathercode_now_image: weather_icon_filename(code: data.dig("current", "weathercode"), is_day: data.dig("current", "is_day") == 1),
+      weathercode_now: data.dig("current", "weathercode"),
       forecast: forecast,
     }
   end
@@ -87,30 +87,5 @@ class WeatherService
            end
 
     JSON.parse(body)
-  end
-
-  def weather_icon_filename(code:, is_day:)
-    day = is_day ? "day" : "night"
-
-    case code
-    when 0
-      "clear-#{day}.svg"
-    when 1, 2
-      "partly-cloudy-#{day}.svg"
-    when 3
-      "overcast.svg"
-    when 45, 48
-      "fog.svg"
-    when 51, 53, 55, 56, 57
-      "drizzle.svg"
-    when 61, 63, 65, 66, 67, 80, 81, 82
-      "rain.svg"
-    when 71, 73, 75, 77
-      "snow.svg"
-    when 95, 96, 99
-      "thunderstorms.svg"
-    else
-      "unknown.svg"
-    end
   end
 end

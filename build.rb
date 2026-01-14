@@ -29,6 +29,7 @@ puts "Wrote dist/index.html"
 
 FileUtils.mkdir_p("dist/images")
 FileUtils.cp_r("images/.", "dist/images")
+FileUtils.cp_r("assets/.", "dist/assets")
 puts "Copied images to dist/images"
 puts "Done."
 puts
