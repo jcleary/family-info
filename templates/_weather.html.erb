@@ -12,8 +12,8 @@
       <div class="flex flex-col space-y-0 flex-grow object-center">
         <div class="text-xl font-semibold text-slate-900 text-center"><%= @weather[:temp_now_c].round %>&deg;</div>
         <div class="text-sm test-slate-900 text-center">Feels like <%= @weather[:feels_like_now_c].round %>&deg;</div>
-        <div class="text-center">
-          <i class="wi <%= "wi-wmo4680-#{@weather[:weathercode_now]}" %> text-6xl"></i>
+        <div class="text-center pt-1">
+          <i class="wi <%= "wi-wmo4680-#{@weather[:weathercode_now]}" %> text-7xl"></i>
         </div>
       </div>
 
