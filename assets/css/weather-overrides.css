@@ -1,0 +1,7 @@
+/* cloudy */
+.wi-wmo4680-0:before,
+.wi-wmo4680-00:before,
+.wi-wmo4680-2:before,
+.wi-wmo4680-02:before {
+    content: "\f013";
+}
